@@ -1,6 +1,5 @@
 package com.board.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +34,7 @@ public class HomeController {
 	}
 	// login(userid=sky&passwd=1234)
 	@RequestMapping("/login")
-	public ModelAndView login(
-			@Param String userid, @Param String passwd,
-			HttpServletRequest request) {
+	 
 	public ModelAndView login(HttpServletRequest request) {
 		
 		String userid = request.getParameter("userid");
@@ -49,6 +46,7 @@ public class HomeController {
 	    if( userVo !=null) { //아이디와 암호가 일치하면
 		HttpSession session = request.getSession();
 		session.setAttribute("login", userVo);
+		session.setAttribute("menu", menuVo);
 		session.setMaxInactiveInterval(30 * 60);//30분 동안 유지
 	    loc="redirect:/";
 	    }else { //아이디 비번 틀림

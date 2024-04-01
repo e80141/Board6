@@ -30,11 +30,11 @@ public class LoginCheckinterceptor implements HandlerInterceptor{
 				
 //-------------------------------------------
 		
-		if( obj == null) {
+		/*if( obj == null) {
 			//로그인되어 있지 않다면 /loginForm 으로 이동
 			response.sendRedirect("/loginForm");
 			return false;
-	}
+	}*/
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);
 	}
